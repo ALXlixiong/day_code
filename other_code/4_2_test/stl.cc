@@ -26,6 +26,7 @@ using namespace std;
 //}
 #include<algorithm>
 #include<cstring>
+#include<string>
 int main()
 {
   char *str1 = "hello world";
