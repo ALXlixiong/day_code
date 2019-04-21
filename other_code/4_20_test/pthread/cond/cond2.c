@@ -12,7 +12,7 @@ void *saleFun(void *arg)
   while(1)
   {
     pthread_mutex_lock(&mutex);
-    if(g_tmp == 1)
+    while(g_tmp == 1)
       pthread_cond_wait(&cond,&mutex);
     g_tmp = 1;
     printf("生产一个苹果\n");
@@ -24,13 +24,12 @@ void *saleFun(void *arg)
 
 void *eatFun(void *arg)
 {
-  (void)arg;
   while(1)
   {
     pthread_mutex_lock(&mutex);
     while(g_tmp == 0)
       pthread_cond_wait(&cond,&mutex);//原子操作
-    printf("eat a apple!!\n");
+    printf("eat a apple!! \n");
     g_tmp = 0;
     pthread_mutex_unlock(&mutex);
     pthread_cond_signal(&cond);//唤醒生产者
@@ -44,10 +43,11 @@ void *eatFun(void *arg)
 }
 int main()
 {
-  pthread_t tid[2];
+  pthread_t tid[3];
   int ret = 0;
   pthread_cond_init(&cond,NULL);
   pthread_mutex_init(&mutex,NULL);
+
   ret = pthread_create(&tid[0],NULL,saleFun,NULL);
   if(ret != 0)
   {

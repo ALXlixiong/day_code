@@ -17,7 +17,7 @@ void *sale(void *arg)
     //int pthread_cond_broadcast(pthread_cond_t *cond);
     //广播通知，通知等待队列中所有线程
     pthread_cond_signal(&cond);
-    //sleep(3);//这里只是限制时间，如果没有这个时间，那么导致生产大量。
+    sleep(1);//这里只是限制时间，如果没有这个时间，那么导致生产大量。
     pthread_mutex_unlock(&mutex);
   }
   return NULL;
@@ -59,13 +59,13 @@ int main()
   int ret = 0;
   pthread_cond_init(&cond,NULL);
   pthread_mutex_init(&mutex,NULL);
-  ret = pthread_create(&tid[0],NULL,sale,NULL);
+  ret = pthread_create(&tid[1],NULL,eat,NULL);
   if(ret != 0)
   {
     perror("create error!");
     exit(1);
   }
-  ret = pthread_create(&tid[1],NULL,eat,NULL);
+  ret = pthread_create(&tid[0],NULL,sale,NULL);
   if(ret != 0)
   {
     perror("create error!");

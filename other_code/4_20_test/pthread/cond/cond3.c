@@ -13,7 +13,7 @@ void *saleFun(void *arg)
   while(1)
   {
     pthread_mutex_lock(&mutex);
-    if(g_tmp == 1)
+    while(g_tmp == 1)
       pthread_cond_wait(&sale,&mutex);
     g_tmp = 1;
     printf("生产一个苹果\n");
