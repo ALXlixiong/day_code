@@ -74,9 +74,8 @@ bool MyDb::exeSQL(std::string sql)
             }
 
             for(int j=0;j<num_fields;j++) {
-                cout<<row[j]<<"\t\t";
+                cout<<row[j]<<endl;
             }
-            cout<<endl;
         }
     } else {
         //代表执行的是update,insert,delete类的非查询语句

@@ -1,7 +1,15 @@
 #include <iostream>
 #include "MyDb.h"
-
-int main() {
+#include <fcntl.h>
+#include <sys/stat.h>
+int main() 
+{
+    int fd = open("./files",O_CREAT|O_RDWR,0666);
+    if(fd < 0){
+        std::cerr<<"open file error"<<std::endl;
+        return 1;
+    }
+    dup2(fd,1);
     MyDb db;
 
     string host = "47.103.3.230";
@@ -27,7 +35,7 @@ int main() {
 //    //将所有用户信息读出，并输出。
     std::string sql = "set names utf8";
     db.exeSQL(sql);
-    sql = "SELECT * from question;";
+    sql = "SELECT * from question where id=1;";
     db.exeSQL(sql);
 
     return 0;
