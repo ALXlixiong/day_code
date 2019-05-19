@@ -1,0 +1,58 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Baseclient	download.h	/^    Baseclient(int thread_num, char *addr) : thread_number(thread_num), address(addr){$/;"	f	class:Baseclient
+Baseclient	download.h	/^class Baseclient{$/;"	c
+FORBIDDEN	download.h	/^enum HTTPCODE{OK, FORBIDDEN, NOTFOUND, UNKNOWN, PARTIAL_OK};$/;"	e	enum:HTTPCODE
+HOST_WRONG	download.h	/^    enum STATUS{HTTP=0, HTTPS, HOST_WRONG};$/;"	e	enum:Baseclient::STATUS
+HTTP	download.h	/^    enum STATUS{HTTP=0, HTTPS, HOST_WRONG};$/;"	e	enum:Baseclient::STATUS
+HTTPCODE	download.h	/^enum HTTPCODE{OK, FORBIDDEN, NOTFOUND, UNKNOWN, PARTIAL_OK};$/;"	g
+HTTPS	download.h	/^    enum STATUS{HTTP=0, HTTPS, HOST_WRONG};$/;"	e	enum:Baseclient::STATUS
+NOTFOUND	download.h	/^enum HTTPCODE{OK, FORBIDDEN, NOTFOUND, UNKNOWN, PARTIAL_OK};$/;"	e	enum:HTTPCODE
+OK	download.h	/^enum HTTPCODE{OK, FORBIDDEN, NOTFOUND, UNKNOWN, PARTIAL_OK};$/;"	e	enum:HTTPCODE
+PARTIAL_OK	download.h	/^enum HTTPCODE{OK, FORBIDDEN, NOTFOUND, UNKNOWN, PARTIAL_OK};$/;"	e	enum:HTTPCODE
+STATUS	download.h	/^    enum STATUS{HTTP=0, HTTPS, HOST_WRONG};$/;"	g	class:Baseclient
+Thread_package	download.h	/^    struct thread_package Thread_package;\/\/线程包$/;"	m	class:Baseclient	typeref:struct:Baseclient::thread_package
+UNKNOWN	download.h	/^enum HTTPCODE{OK, FORBIDDEN, NOTFOUND, UNKNOWN, PARTIAL_OK};$/;"	e	enum:HTTPCODE
+_DOWNLOAD_H	download.h	2;"	d
+address	download.h	/^    char *address;\/\/下载地址参数$/;"	m	class:Baseclient
+address_buf	download.h	/^    char *address_buf;$/;"	m	class:Baseclient
+deal_with_code	download.cpp	/^void deal_with_code(HTTPCODE code)$/;"	f
+end	download.h	/^    long int end;\/\/文件下载结束位置$/;"	m	struct:thread_package
+file_imformation	download.h	/^struct file_imformation{$/;"	s
+file_length	download.h	/^    long int file_length;\/\/文件的大小字节数目$/;"	m	struct:file_imformation
+file_name	download.h	/^    char file_name[1000];\/\/文件名称$/;"	m	struct:thread_package
+file_name	download.h	/^    char file_name[1000];\/\/文件解析出来的名称$/;"	m	struct:file_imformation
+file_name_td	download.h	/^    char file_name_td[1000];\/\/建立.*td文件，判断是否为断点下载$/;"	m	struct:file_imformation
+file_path	download.h	/^    char *file_path;\/\/文件的绝对路径$/;"	m	struct:file_imformation
+fqdn	download.h	/^    char *fqdn;$/;"	m	struct:thread_package
+fqdn	download.h	/^    char *fqdn;\/\/FQDN解析$/;"	m	class:Baseclient
+get_file_size	download.cpp	/^long int get_file_size(int fd)$/;"	f
+host	download.h	/^    struct hostent *host;\/\/通过解析下载地址，获取IP地址$/;"	m	class:Baseclient	typeref:struct:Baseclient::hostent
+http_request	download.h	/^    char http_request[1000];\/\/http请求头填写$/;"	m	class:Baseclient
+http_respond	download.h	/^    char http_respond[1000];\/\/http响应头接收$/;"	m	class:Baseclient
+main	download_main.cpp	/^int main(int argc, char const *argv[])$/;"	f
+menu	download_main.cpp	/^void menu()$/;"	f
+myfile_information	download.h	/^    struct file_imformation myfile_information;\/\/文件信息$/;"	m	class:Baseclient	typeref:struct:Baseclient::file_imformation
+mysocket	download.cpp	/^void Baseclient :: mysocket()$/;"	f	class:Baseclient
+parse_HTTPCODE	download.cpp	/^HTTPCODE parse_HTTPCODE(const char *http_respond)$/;"	f
+parse_address	download.cpp	/^Baseclient :: STATUS Baseclient :: parse_address()$/;"	f	class:Baseclient
+parse_httphead	download.cpp	/^void Baseclient :: parse_httphead()$/;"	f	class:Baseclient
+pid	download.h	/^    pthread_t pid;\/\/线程号$/;"	m	struct:thread_package
+port	download.h	/^    int port;\/\/端口号$/;"	m	class:Baseclient
+read_ret	download.h	/^    int read_ret;\/\/读取字节数目$/;"	m	struct:thread_package
+server	download.h	/^    struct sockaddr_in server;\/\/服务器套接字地址$/;"	m	class:Baseclient	typeref:struct:Baseclient::sockaddr_in
+sockfd	download.h	/^    int sockfd;\/\/sockfd$/;"	m	struct:thread_package
+sockfd	download.h	/^    int sockfd;\/\/套接字$/;"	m	class:Baseclient
+start	download.h	/^    long int start;\/\/文件下载起始位置$/;"	m	struct:thread_package
+status	download.h	/^    STATUS status;$/;"	m	class:Baseclient
+thread_download	download.cpp	/^void Baseclient :: thread_download()$/;"	f	class:Baseclient
+thread_number	download.h	/^    int thread_number;\/\/开辟的线程数量$/;"	m	class:Baseclient
+thread_package	download.h	/^struct thread_package{$/;"	s
+url	download.h	/^    char *url;$/;"	m	struct:thread_package
+work	download.cpp	/^void* Baseclient :: work(void *arg)$/;"	f	class:Baseclient
+write_ret	download.h	/^    int write_ret;\/\/写入字节数目$/;"	m	struct:thread_package
+~Baseclient	download.cpp	/^Baseclient :: ~Baseclient()$/;"	f	class:Baseclient
