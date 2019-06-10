@@ -1,0 +1,16 @@
+Boolean Found;
+Work = Available; Finish[1..n] = false; 
+while(true){
+    //不断的找可执行进程
+   Found = false;
+   for(i=1; i<=n; i++){
+     if(Finish[i]==false && Need[i]<=Work){
+        Work = Work + Allocation[i];//把放出去的贷款也当做自己的资产
+        Finish[i] = true; 
+        Found = true;
+      }
+    }
+   if(Found==false)break;
+ }
+for(i=1;i<=n;i++) 
+  if(Finish[i]==false)return “deadlock”; //如果有进程是完不成的，那么就是有死锁
