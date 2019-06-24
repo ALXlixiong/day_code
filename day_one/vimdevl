@@ -1,0 +1,25 @@
+set nu          "显示行号
+
+syntax on       "语法高亮
+
+set showmode    "底部显示当前处于命令模式还是插入模式
+
+set showcmd     "底部显示当前键入命令
+
+set mouse=a     "支持使用鼠标
+
+set encoding=utf-8      "使用utf-8编码
+
+set t_Co=256    "启用256色
+
+filetype indent on      "开启文件类型检查
+
+set autoindent	"按下回车键后，下一行的缩进会自动跟上一行的缩进保持一致
+
+set tabstop=2	"按下 Tab 键时，Vim 显示的空格数
+
+set shiftwidth=4	"在文本上按下>>（增加一级缩进）、<<（取消一级缩进）或者==（取消全部缩进）时，每一级的字符数
+
+set expandtab	"由于 Tab 键在不同的编辑器缩进不一致，该设置自动将 Tab 转为空格
+
+set softtabstop=4	"Tab 转为4个空格
