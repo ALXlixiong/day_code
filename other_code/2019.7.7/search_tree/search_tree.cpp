@@ -35,6 +35,123 @@ class BTree
             return nullptr;
         }
 
+        bool Erase(int val)
+        {
+            //找到这个节点
+            PNode cur = root_;
+            PNode parent = nullptr;
+            while(cur)
+            {
+                if(cur->val_ == val)
+                    break;
+                else if(val > cur->val_)
+                {
+                    parent = cur;
+                    cur = cur->right_;
+                }
+                else
+                {
+                    parent = cur;
+                    cur = cur->left_;
+                }
+            }
+            if(cur == nullptr)
+            {
+                std::cout<<val<<"没找到，删除失败\n";
+                return false;
+            }
+            if(cur->left_ == nullptr)
+            {
+                //根 || 只有右孩子 || 叶子节点
+                if(parent == nullptr)
+                {
+                    root_ = cur->right_;
+                    delete cur;
+                    cur = nullptr;
+                }
+                else if(cur->right_ != nullptr)
+                {
+                    if(cur == parent->left_)
+                    {
+                        parent->left_ = cur->right_;
+                        delete cur;
+                        cur = nullptr;
+                    }
+                    else
+                    {
+                        parent->right_ = cur->right_;
+                        delete cur;
+                        cur = nullptr;
+                    }
+                }
+                else
+                {
+                    if(cur == parent->left_)
+                    {
+                        parent->left_ = nullptr;
+                        delete cur;
+                        cur = nullptr;
+                    }
+                    else
+                    {
+                        parent->right_ = nullptr;
+                        delete cur;
+                        cur = nullptr;
+                    }
+                }
+            }
+            else if(cur->right_ == nullptr)
+            {
+                if(parent == nullptr)
+                {
+                    root_ = cur->left_;
+                    delete cur;
+                    cur = nullptr;
+                }
+                else
+                {
+                    if(cur == parent->left_)
+                    {
+                        parent->left_ = cur->left_;
+                        delete cur;
+                        cur = nullptr;
+                    }
+                    else
+                    {
+                        parent->right_ = cur->left_;
+                        delete cur;
+                        cur = nullptr;
+                    }
+                }
+            }
+            else
+            {
+                PNode deletenode = cur->right_;
+                PNode parent = cur;
+                while(deletenode->left_)
+                {
+                    parent = deletenode;
+                    deletenode = deletenode->left_;
+                }
+                //特殊情况
+                if(deletenode == cur->right_)
+                {
+                    cur->val_ = deletenode->val_;
+                    cur->right_ = deletenode->right_;
+                    delete deletenode;
+                    deletenode = nullptr;
+                }
+                else
+                {
+                    cur->val_ = deletenode->val_;
+                    parent->left_ = deletenode->right_;
+                    delete deletenode;
+                    deletenode = nullptr;
+                }
+            }
+            return true;
+        }
+
         bool Insert(int val)
         {
             //找到需要插入的位置
@@ -108,6 +225,21 @@ int main()
     b.Insert(7);
     b.Insert(2);
     b.Insert(3);
+    if(!b.Insert(3))
+        std::cout<<"insert error\n";
     b.InOrder();
+
+
+
+    b.Erase(6);
+    b.InOrder();
+
+    b.Erase(2);
+    b.InOrder();
+
+    b.Erase(4);
+    b.InOrder();
+
+    b.Delete();
     return 0;
 }
