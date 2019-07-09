@@ -77,5 +77,43 @@ class AVLTree
             }
         }
     private:
-        
+        void RotateRight(PNode &pParent)
+        {
+            PNode pSubL = pParent->left_;
+            pNode pSubLR = pSubL->right_;
+
+            PNode ppParent = pParent->parent_;
+
+            pSubL->right_ = pParent;
+            pParent->left_ = pSubLR;
+            pSubL->parent_ = ppParent;
+            if(pSubLR)
+                pSubLR->parent_ = pParent;
+            pParent->parent_ = pSubL;
+
+            if(ppParent == nullptr)
+            {
+                Root_ = pSubL;
+            }
+            else
+            {
+                if(ppParent->left_ == pParent)
+                    ppParent->left_ = pSubL;
+                else
+                    ppParent->right_ = pSubL;
+            }
+            pParent->bf_ = pSubL->bf_ = 0;
+        }
+        void RotateLeft(PNode &pParent)
+        {
+            ;
+        }
+        void LeftRotateRight(PNode &pParent)
+        {
+            ;
+        }
+        void RightRotateLeft(PNode &pParent)
+        {
+            ;
+        }
 };
