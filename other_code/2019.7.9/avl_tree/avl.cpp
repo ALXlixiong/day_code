@@ -1,8 +1,6 @@
 #include <iostream>
 #include <vector>
 
-
-
 template<class K, class V>
 struct AVLTreeNode
 {
@@ -63,7 +61,7 @@ class AVLTree
         {
             if (pParent->left_ == pCur)
                 pParent->bf_--;
-            else
+            else if(pParent->right_ == pCur)
                 pParent->bf_++;
 
             if (pParent->bf_ == 0)
@@ -89,6 +87,7 @@ class AVLTree
                     else
                         LeftRotateRight(pParent);
                 }
+                //pParent = pParent->parent_->parent_;
             }
         }
         return true;
@@ -166,13 +165,31 @@ class AVLTree
     }
     void LeftRotateRight(PNode &pParent)
     {
+        PNode pSubL = pParent->left_;
+        PNode pSubLR = pSubL->right_;
+        int bf = pSubLR->bf_;
+
         RotateLeft(pParent->left_);
         RotateRight(pParent);
+
+        if (bf == -1)
+            pParent->bf_ = 1;
+        else if (bf == 1)
+            pSubL->bf_ = -1;
     }
     void RightRotateLeft(PNode &pParent)
     {
+        PNode pSubR = pParent->right_;
+        PNode pSubRL = pSubR->left_;
+        int bf = pSubRL->bf_;
+
         RotateRight(pParent->right_);
         RotateLeft(pParent);
+
+        if (bf == 1)
+            pParent->bf_ = -1;
+        else if (bf == -1)
+            pSubR->bf_ = 1;
     }
 };
 
